@@ -1,17 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Dec 13 21:12:58 2022
+import yt_dlp
 
-@author: Samed
-"""
+link = input("Video linkini girin: ")
 
-from pytube import YouTube
+ydl_opts = {
+    'outtmpl': 'indirilenler/%(title)s.%(ext)s'
+}
 
-link = input("Link: ")
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download([link])
 
-yt = YouTube(link)
-ys = yt.streams.get_highest_resolution()
-
-print("indiriliyor...")
-ys.download()
-print("indirildi!")
